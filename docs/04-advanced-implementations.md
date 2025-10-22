@@ -8,6 +8,8 @@ If the client is not using Adobe Analytics, you still follow the same base imple
 
 Response tokens are implicitly included in the response of the `alloy("sendEvent", ...)` call as part of the `propositions` payload. They can be accessed programmatically by chaining a `.then()` promise to the Web SDK call.
 
+*See [`snippets/target-response-tokens.js`](../snippets/target-response-tokens.js) for the code.*
+
 ## 4.3 trackEvent Equivalent (Custom Events)
 
 The AT.js `trackEvent` function does not exist in the Web SDK. To fire a custom event to pass data to Target (e.g., conversion tracking or profile update), use a standard `alloy("sendEvent", ...)` call with an `eventType` of `decisioning.propositionDisplay` and include the data payload.
