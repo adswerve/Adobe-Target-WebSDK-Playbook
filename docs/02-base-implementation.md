@@ -14,7 +14,7 @@ In this rule, you will add the action of **Web SDK Send Event**.
 
 1.  Select the checkbox: **Use Guided Events**.
 2.  Select the radio button: **Request Personalization**.
-3.  Make a data element called "Target Web SDK Data" and pass your profile parameters into it. *See [`snippets/target-custom-data-element.js`](../snippets/target-custom-data-element.js) for the code.*
+3.  Make a data element called "Target Web SDK Data" and pass your profile parameters into it. *See [`snippets/target-custom--params-data-element.js`](../snippets/target-custom-params-data-element.js) for the code.*
 
 ## 2.3 Datastream Configuration
 
@@ -36,3 +36,27 @@ To enable reporting for Target activities in Analytics (A4T), a one-time provisi
 
 ## 2.5 Conditions
 Please match conditions for URLs and respect cookie consent.
+
+## 2.6 Fully Custom Code Implementation (Advanced)
+
+For the most granular control, you can bypass the standard "Web SDK Send Event" action in Adobe Launch and use a "Custom Code" action to build and send the event manually using the `alloy` object.
+
+This advanced approach is useful if you need to:
+* Manually handle the response from Target (propositions).
+* Delay or programmatically control content rendering.
+* Prevent or manage display event tracking separately from the fetch.
+* Push Target response metadata into a `dataLayer` for other analytics or debugging tools.
+
+### 2.6.1 Launch Rule Configuration
+
+1.  **Rule Event:** Use the same timing as in section 2.1 (**Library Loaded** and/or **History Change**).
+2.  **Action:** Instead of "Web SDK Send Event," add a new **Core > Custom Code** action.
+3.  **Language:** Set the language to **JavaScript**.
+
+### 2.6.2 Custom Code Snippet
+
+Paste the following code into the custom code action editor. This code manually constructs the `sendEvent` call to fetch decisions, processes the response, and pushes metadata to the `dataLayer`.
+
+*See [`snippets/target-sendevent-global-mbox.js`](../snippets/target-sendevent-global-mbox.js) for the code.*
+
+> **Note:** This method also incorpoates response tokens from the returned propositions. It also uses a data element called "Target | Dataset ID" as the dataset override to cycle between different environments.
