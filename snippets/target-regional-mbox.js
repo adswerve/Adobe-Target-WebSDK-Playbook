@@ -21,7 +21,7 @@ alloy("sendEvent", {
       datasets: {
         event: {
           // Replace with the appropriate Dataset ID
-          datasetId: "682bd0ce91abec2aef12bf84" 
+          datasetId: "1234" // can also use the data element "Target | Dataset ID"
         }
       }
     }
