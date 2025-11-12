@@ -14,6 +14,7 @@ In this rule, you will add the action of **Web SDK Send Event**.
 
 1.  Select the checkbox: **Use Guided Events**.
 2.  Select the radio button: **Request Personalization**.
+3.  Make a data element called "Target Web SDK Data" and pass your profile parameters into it. *See [`snippets/target-custom-data-element.js`](../snippets/target-custom-data-element.js) for the code.*
 
 ## 2.3 Datastream Configuration
 
@@ -32,3 +33,6 @@ To enable reporting for Target activities in Analytics (A4T), a one-time provisi
 2.  **Analytics Call Configuration:**
     * The Analytics call (via a separate Web SDK Send Event action) should also utilize **Guided Events** for **Collect Analytics**.
     * **Fallback:** If not using Guided Events, ensure the checkbox for **“Include Rendered Propositions”** is explicitly checked on the Analytics Web SDK action.
+
+## 2.5 Conditions
+Please match conditions for URLs and respect cookie consent.
